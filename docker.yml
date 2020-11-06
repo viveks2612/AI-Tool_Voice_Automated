@@ -1,0 +1,17 @@
+- hosts: all
+  tasks:
+    - package:
+         name: "docker-ce"
+         state: present
+
+    - service:
+         name: "docker"
+         state: started
+
+    - service:
+         name: "docker"
+         enabled: yes
+
+    - get_url:
+         url: "https://download.docker.com/linux/centos/docker-ce.repo"
+         dest: '/etc/yum.repos.d/docker-ce.repo'

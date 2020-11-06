@@ -1,0 +1,10 @@
+import cv2
+x = cv2.VideoCapture(0)
+while True:
+	true , photo = x.read()
+	cv2.imshow('yes' , photo)
+	if cv2.waitKey(1)==13:
+		break
+
+cv2.destroyAllWindows()
+x.release()

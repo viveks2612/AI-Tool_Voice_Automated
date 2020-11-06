@@ -1,0 +1,23 @@
+import os
+print("master ban rha he")
+print("enter ip")
+remote_ip = input()
+os.system("ssh {} iptables -F".format(remote_ip))
+print("firewall temporary off")
+os.system("ssh {} hostnamectl set-hostname nn.lw.com".format(remote_ip))
+print("hostname change")
+os.system("ssh -X {} gedit /etc/hosts".format(remote_ip))
+print("edit cmplte")
+os.system("ssh {} mkdir -p etc/hadoop/name".format(remote_ip))
+print("directory created")
+os.system("scp /root/Desktop/myproject/master/core-site.xml {}:/etc/hadoop/".format(remote_ip))
+print("file sent core")
+os.system("scp /root/Desktop/myproject/master/hdfs-site.xml {}:/etc/hadoop/".format(remote_ip))
+print("file sent hdfs")
+os.system("ssh {} hadoop namenode -format".format(remote_ip))
+print("format cmplte")
+os.system("ssh {} hadoop-daemon.sh start namenode".format(remote_ip))
+print("start service")
+print("master setup is ready")
+
+
